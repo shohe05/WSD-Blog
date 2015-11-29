@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <h2>Twitterでログイン</h2>
-    <a href="/.twitter-login.php" class="btn btn-success">Twitterログインはこちら</a>
+    <a href="./twitter-login.php" class="btn btn-success">Twitterログインはこちら</a>
 
 
     <h2>ログイン</h2>
