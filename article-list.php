@@ -5,7 +5,7 @@ session_start();
 redirectIfNotLogin();
 
 $db = connectDB();
-$sql = 'SELECT * FROM articles';
+$sql = 'SELECT * FROM articles ORDER BY id DESC';
 $statement = $db->query($sql);
 $articles = [];
 

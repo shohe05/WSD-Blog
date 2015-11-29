@@ -51,7 +51,12 @@ $article = $statement->fetch(PDO::FETCH_ASSOC);
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="/article-list.php">一覧</a></li>
                 <li role="presentation"><a href="/new-article.php">投稿</a></li>
-                <li role="presentation"><a href="/logout.php"><?php echo loginUser()['username']; ?></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout.php">ログアウト</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
@@ -69,6 +74,7 @@ $article = $statement->fetch(PDO::FETCH_ASSOC);
 
     <pre id="article-body" style="background: white; border:none; font-size:18px; padding: 0; margin-top: 30px;"><?php echo $article['body']; ?></pre>
 
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
