@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="/user-register.php">新規登録</a></li>
-                <li role="presentation"><a href="/login.php">ログイン</a></li>
+                <li role="presentation"><a href="./user-register.php">新規登録</a></li>
+                <li role="presentation"><a href="./login.php">ログイン</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
