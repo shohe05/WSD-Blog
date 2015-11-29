@@ -1,7 +1,7 @@
 <?php
 require("./hybridauth/hybridauth/Hybrid/Auth.php");
 session_start();
-require_once('functions.php');
+require_once('./functions.php');
 
 $auth = new Hybrid_Auth( "./hybridauth/hybridauth/config.php" );
 $twitter = $auth->authenticate("Twitter");

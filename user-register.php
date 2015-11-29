@@ -1,5 +1,5 @@
 <?php
-require_once('functions.php');
+require_once(',/functions.php');
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="/user-register.php">新規登録</a></li>
-                <li role="presentation"><a href="/login.php">ログイン</a></li>
+                <li role="presentation"><a href="./user-register.php">新規登録</a></li>
+                <li role="presentation"><a href="./login.php">ログイン</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     <h2>Twitterで登録</h2>
-    <a href="/twitter-login.php" class="btn btn-success">Twitterで登録するならこちら</a>
+    <a href="./twitter-login.php" class="btn btn-success">Twitterで登録するならこちら</a>
 
     <h2>新規登録</h2>
 

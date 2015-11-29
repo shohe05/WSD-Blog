@@ -46,12 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="/article-list.php">一覧</a></li>
-                <li role="presentation"><a href="/new-article.php">投稿</a></li>
+                <li role="presentation"><a href="./article-list.php">一覧</a></li>
+                <li role="presentation"><a href="./new-article.php">投稿</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/logout.php">ログアウト</a></li>
+                        <li><a href="./logout.php">ログアウト</a></li>
                     </ul>
                 </li>
             </ul>
