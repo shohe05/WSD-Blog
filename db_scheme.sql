@@ -16,5 +16,3 @@ CREATE TABLE articles (
     modified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE cascade ON DELETE cascade
 );
-
-INSERT INTO users (username, password) VALUES ('test_user', 'test_user');

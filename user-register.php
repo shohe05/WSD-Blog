@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 
 
-    <h2>Twitterでログイン</h2>
+    <h2>Twitterで登録</h2>
     <a href="/twitter-login.php" class="btn btn-success">Twitterで登録するならこちら</a>
 
     <h2>新規登録</h2>

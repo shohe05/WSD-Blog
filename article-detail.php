@@ -11,6 +11,9 @@ $statement->execute(['id' => $_GET['id']]);
 
 $article = $statement->fetch(PDO::FETCH_ASSOC);
 
+$statement = $db->query('SELECT * FROM users WHERE id = ' . $article['user_id']);
+$article_user = $statement->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <html lang="ja">
@@ -67,7 +70,7 @@ $article = $statement->fetch(PDO::FETCH_ASSOC);
     </h1>
 
     <p id="article-meta">
-        <i class="glyphicon glyphicon-user"></i>&nbsp;<?php echo 'ダイソン' ?>&nbsp;&nbsp;
+        <i class="glyphicon glyphicon-user"></i>&nbsp;<?php echo $article_user['username'] ?>&nbsp;&nbsp;
         <i class="glyphicon glyphicon-time"></i>&nbsp;
         <?php echo strftime("%Y年%m月%d日", strtotime($article['modified_at'])); ?>
     </p>

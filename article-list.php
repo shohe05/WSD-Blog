@@ -65,7 +65,7 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
         <ul style="list-style-type:none; padding-left: 1em;">
             <?php foreach($articles as $article): ?>
                 <li class='article'>
-                    <p style="color:#999;">2015/2/2 by Daison</p>
+                    <p style="color:#999;">2015/2/2</p>
                     <h3>
                         <a href="/article-detail.php?id=<?php echo $article['id']; ?>">
                             <?php echo $article['title']; ?>
