@@ -13,3 +13,14 @@ function connectDB()
 
     return $db;
 }
+
+function redirectIfNotLogin()
+{
+    if (!isset($_SESSION['user'])) {
+        return header('Location: login.php');
+    }
+}
+
+function loginUser() {
+    return $_SESSION['user'];
+}

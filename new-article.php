@@ -2,6 +2,7 @@
 
 require_once('./functions.php');
 session_start();
+redirectIfNotLogin();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -14,9 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $db = connectDb();
     $sql = "INSERT INTO articles(user_id, title, body) VALUES(:user_id, :title, :body)";
     $statement = $db->prepare($sql);
-    $user_id = 1;
     $result = $statement->execute([
-        ':user_id' => $user_id,
+        ':user_id' => $_SESSION['user']['id'],
         ':title' => $_POST['title'],
         ':body' => $_POST['body'],
     ]);
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="/article-list.php">一覧</a></li>
                 <li role="presentation" class="active"><a href="/new-article.php">投稿</a></li>
-                <li role="presentation"><a href="#">ログアウト</a></li>
+                <li role="presentation"><a href="/logout.php"><?php echo loginUser()['username']; ?></a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>

@@ -1,8 +1,7 @@
 CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     twitter_id VARCHAR(255),
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     modified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -18,4 +17,4 @@ CREATE TABLE articles (
     FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE cascade ON DELETE cascade
 );
 
-INSERT INTO users (name, password) VALUES ('test_user', 'test_user');
+INSERT INTO users (username, password) VALUES ('test_user', 'test_user');

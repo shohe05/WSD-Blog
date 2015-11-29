@@ -2,6 +2,7 @@
 
 require_once('./functions.php');
 session_start();
+redirectIfNotLogin();
 
 $db = connectDB();
 $sql = 'SELECT * FROM articles WHERE id = :id';
@@ -50,7 +51,7 @@ $article = $statement->fetch(PDO::FETCH_ASSOC);
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="/article-list.php">一覧</a></li>
                 <li role="presentation"><a href="/new-article.php">投稿</a></li>
-                <li role="presentation"><a href="#">ログアウト</a></li>
+                <li role="presentation"><a href="/logout.php"><?php echo loginUser()['username']; ?></a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
@@ -61,7 +62,7 @@ $article = $statement->fetch(PDO::FETCH_ASSOC);
     </h1>
 
     <p id="article-meta">
-        <i class="glyphicon glyphicon-user"></i> ダイソン&nbsp;&nbsp;
+        <i class="glyphicon glyphicon-user"></i>&nbsp;<?php echo 'ダイソン' ?>&nbsp;&nbsp;
         <i class="glyphicon glyphicon-time"></i>&nbsp;
         <?php echo strftime("%Y年%m月%d日", strtotime($article['modified_at'])); ?>
     </p>
