@@ -45,12 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="/user-register.php">新規登録</a></li>
+                <li role="presentation"><a href="/user-register.php">新規登録</a></li>
                 <li role="presentation"><a href="/login.php">ログイン</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
     </div>
+
+
+    <h2>Twitterでログイン</h2>
+    <a href="/twitter-login.php" class="btn btn-success">Twitterで登録するならこちら</a>
 
     <h2>新規登録</h2>
 

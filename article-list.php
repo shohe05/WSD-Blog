@@ -38,9 +38,14 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="/article-list.php">一覧</a></li>
+                <li role="presentation"><a href="/article-list.php">一覧</a></li>
                 <li role="presentation"><a href="/new-article.php">投稿</a></li>
-                <li role="presentation"><a href="/logout.php"><?php echo loginUser()['username']; ?></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout.php">ログアウト</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
@@ -56,34 +61,24 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
         </div>
     <?php endif; ?>
 
-<!--    --><?php //foreach($articles as $article): ?>
-                <div class="row">
-<!--        <div class="col-md-4">-->
-<!--            <h2>-->
-<!--                --><?php //echo $article['title']; ?>
-<!--            </h2>-->
-<!--            <p>-->
-<!--                --><?php //echo $article['body']; ?>
-<!--            </p>-->
-<!--            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
-<!--        </div>-->
-<!--                </div>-->
-<!--    --><?php //endforeach; ?>
-                    <ul style="list-style-type:none; padding-left: 1em;">
-                        <?php foreach($articles as $article): ?>
-                        <li class='article'>
-                            <p style="color:#999;">2015/2/2 by Daison</p>
-                            <h3>
-                                <a href="/article-detail.php?id=<?php echo $article['id']; ?>">
-                                    <?php echo $article['title']; ?>
-                                </a>
-                            </h3>
-                            <hr>
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
+    <div class="row">
+        <ul style="list-style-type:none; padding-left: 1em;">
+            <?php foreach($articles as $article): ?>
+                <li class='article'>
+                    <p style="color:#999;">2015/2/2 by Daison</p>
+                    <h3>
+                        <a href="/article-detail.php?id=<?php echo $article['id']; ?>">
+                            <?php echo $article['title']; ?>
+                        </a>
+                    </h3>
+                    <hr>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 
 </div>
+<script src="./js/jquery.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

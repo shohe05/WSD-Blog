@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="/user-register.php">新規登録</a></li>
-                <li role="presentation" class="active"><a href="/login.php">ログイン</a></li>
+                <li role="presentation"><a href="/login.php">ログイン</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">WSD Blog</h3>
@@ -74,6 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php $_SESSION['error'] = null; ?>
         </div>
     <?php endif; ?>
+
+    <h2>Twitterでログイン</h2>
+    <a href="/twitter-login.php" class="btn btn-success">Twitterログインはこちら</a>
+
 
     <h2>ログイン</h2>
 
