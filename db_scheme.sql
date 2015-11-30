@@ -12,7 +12,11 @@ CREATE TABLE articles (
     user_id INT UNSIGNED NOT NULL,
     title VARCHAR(50) NOT NULL,
     body TEXT NOT NULL,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    modified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at DATETIME NOT NULL,
+    modified_at DATETIME NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE cascade ON DELETE cascade
 );
+
+
+- ユーザー
+- 記事

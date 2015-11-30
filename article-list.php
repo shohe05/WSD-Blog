@@ -2,13 +2,17 @@
 
 require_once('./functions.php');
 session_start();
-redirectIfNotLogin();
+// ログインしていなかったら、ログイン画面にリダイレクトする。
+redirectIfNotLogin(); // ※ この関数はfunctions.phpに定義してある
 
-$db = connectDB();
+// DB接続
+$db = connectDB(); // ※ この関数はfunctions.phpに定義してある
+// 全記事を降順に取得するSQL文
 $sql = 'SELECT * FROM articles ORDER BY id DESC';
+// SQLを実行
 $statement = $db->query($sql);
+// 以下3行で、取得した記事を配列$articlesに格納している
 $articles = [];
-
 foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
     $articles[]= $article;
 }
@@ -43,7 +47,7 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/logout.php">ログアウト</a></li>
+                        <li><a href="./logout.php">ログアウト</a></li>
                     </ul>
                 </li>
             </ul>
@@ -67,7 +71,7 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
                 <li class='article'>
                     <p style="color:#999;">2015/2/2</p>
                     <h3>
-                        <a href="/article-detail.php?id=<?php echo $article['id']; ?>">
+                        <a href="./article-detail.php?id=<?php echo $article['id']; ?>">
                             <?php echo $article['title']; ?>
                         </a>
                     </h3>

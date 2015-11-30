@@ -1,27 +1,48 @@
 <?php
-require_once(',/functions.php');
+require_once('./functions.php');
 session_start();
 
+/*
+ * 普通にアクセスした場合: GETリクエスト
+ * 登録フォームからSubmitした場合: POSTリクエスト
+ */
+// POSTリクエストの場合、以下の処理
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password-confirmation'])) {
+    // 送られた値を取得
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $password_confirmation = $_POST['password-confirmation'];
+
+    /**
+     * 入力値チェック
+     */
+    // 未入力の項目があるか
+    if (empty($username) || empty($password) || empty($password_confirmation)) {
         $_SESSION["error"] = "入力されていない項目があります";
         header("Location: user-register.php");
         return;
     }
 
-    if ($_POST['password'] !== $_POST['password-confirmation']) {
+    // パスワードとパスワード確認が一致しているか
+    if ($password !== $password_confirmation) {
         $_SESSION["error"] = "パスワードが一致しません";
         header("Location: user-register.php");
         return;
     }
 
-    $db = connectDb();
+
+    /**
+     * 登録処理
+     */
+    // DB接続
+    $db = connectDb();  // ※ この関数はfunctions.phpに定義してある
+    // DBにインサート
     $sql = "INSERT INTO users(username, password) VALUES(:username, :password)";
     $statement = $db->prepare($sql);
     $result = $statement->execute([
-        ':username' => $_POST['username'],
-        ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        ':username' => $username,
+        ':password' => password_hash($password, PASSWORD_DEFAULT),
     ]);
     if (!$result) {
         die('Database Error');
@@ -36,8 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/jumbotron-narrow.css">
-
-    <!--    <link rel="stylesheet" href="./css/user-register.css">-->
 </head>
 <body>
 <div class="container">
@@ -68,15 +87,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
     <?php endif; ?>
 
+    <!-- 登録フォーム -->
     <form action="" method="post">
+        <!-- ユーザー名 -->
         <div class="form-group">
             <label for="username-input">ユーザー名</label>
             <input type="text" name="username" class="form-control" id="username-input" placeholder="">
         </div>
+        <!-- パスワード -->
         <div class="form-group">
             <label for="password-input">パスワード</label>
             <input type="password" name="password" class="form-control" id="password-input" placeholder="">
         </div>
+        <!-- パスワード確認 -->
         <div class="form-group">
             <label for="password-confirmation-input">パスワード確認</label>
             <input type="password" name="password-confirmation" class="form-control" id="password-confirmation-input" placeholder="">
@@ -84,6 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <button type="submit" class="btn btn-primary">登録</button>
     </form>
 
-</div> <!-- /container -->
+</div> <!-- .container -->
 </body>
 </html>

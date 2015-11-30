@@ -1,9 +1,10 @@
 <?php
 
+// DB接続
 function connectDB()
 {
     $config = require_once('./config.php');
-    $dsn = "mysql:dbname={$config['db']['database']};host={$config['db']['host']}";
+    $dsn = "mysql:dbname=" . $config['db']['database'] . ";host=" . $config['db']['host'];
 
     try {
         $db = new PDO($dsn, $config['db']['user'], $config['db']['password']);
@@ -14,13 +15,18 @@ function connectDB()
     return $db;
 }
 
+// ログインしていなかったらログインページへリダイレクトする
 function redirectIfNotLogin()
 {
+    // ログインしてなかったら
     if (!isset($_SESSION['user'])) {
-        return header('Location: login.php');
+        // ログインページヘリダイレクトする
+        header('Location: login.php');
+        return;
     }
 }
 
+// ログインしているユーザーの情報を取得する
 function loginUser() {
     return $_SESSION['user'];
 }
