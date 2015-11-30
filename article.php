@@ -75,8 +75,6 @@ $article_user = $statement->fetch(PDO::FETCH_ASSOC);
 
     <p id="article-meta">
         <i class="glyphicon glyphicon-user"></i>&nbsp;<?php echo h($article_user['username']) ?>&nbsp;&nbsp;
-        <i class="glyphicon glyphicon-time"></i>&nbsp;
-        <?php echo strftime("%Y年%m月%d日", strtotime($article['modified_at'])); ?>
     </p>
 
     <pre id="article-body" style="background: white; border:none; font-size:18px; padding: 0; margin-top: 30px;"><?php echo h($article['body']); ?></pre>

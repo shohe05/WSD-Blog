@@ -1,7 +1,7 @@
 <?php
-
 require_once('./functions.php');
 session_start();
+
 // ログインしていなかったらログイン画面に遷移
 redirectIfNotLogin();
 
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 未入力の値が無いか
     if (empty($_POST['title']) || empty($_POST['body'])) {
         $_SESSION["error"] = "タイトルと本文を入力してください。";
-        header("Location: new-article.php");
+        header("Location: index.php");
         return;
     }
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $_SESSION["success"] = "記事を投稿しました";
     // 一覧画面に遷移
-    header("Location: article-list.php");
+    header("Location: index.php");
 }
 
 

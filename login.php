@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $statement->execute(['username' => $username]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // ユーザーが取得できなかったら入力されたusernameが間違っている
+    // ユーザーが取得できなかったら、それは入力されたusernameが間違っているということ
     if (!$user) {
         $_SESSION["error"] = "入力した情報に誤りがあります。";
         header("Location: login.php");
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION["user"]["username"] = $user['username'];
 
     $_SESSION["success"] = "ログインしました。";
-    header("Location: article-list.php");
+    header("Location: index.php");
 }
 
 ?>
