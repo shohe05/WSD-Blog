@@ -80,6 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h2>新規登録</h2>
 
     <!-- Error Message -->
+    <!-- もしセッションにエラーメッセージが入っていたら表示する -->
+    <!-- 一回表示したら、セッションから削除する -->
     <?php if(!empty($_SESSION['error'])): ?>
         <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

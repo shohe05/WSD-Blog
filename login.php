@@ -2,6 +2,11 @@
 require_once('./functions.php');
 session_start();
 
+/*
+ * 普通にアクセスした場合: GETリクエスト
+ * 登録フォームからSubmitした場合: POSTリクエスト
+ */
+// POSTリクエストの場合
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // 送られた値を取得

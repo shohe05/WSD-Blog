@@ -5,6 +5,11 @@ session_start();
 // ログインしていなかったらログイン画面に遷移
 redirectIfNotLogin();
 
+/*
+ * 普通にアクセスした場合: GETリクエスト
+ * 登録フォームからSubmitした場合: POSTリクエスト
+ */
+// POSTリクエストの場合
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // 未入力の値が無いか
