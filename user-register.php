@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $_SESSION["success"] = "登録が完了しました。";
+    // ログイン画面に遷移
     header("Location: login.php");
 }
 ?>
@@ -89,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <!-- 登録フォーム -->
-    <form action="" method="post">
+    <form method="post" action="">
         <!-- ユーザー名 -->
         <div class="form-group">
             <label for="username-input">ユーザー名</label>
@@ -105,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label for="password-confirmation-input">パスワード確認</label>
             <input type="password" name="password-confirmation" class="form-control" id="password-confirmation-input" placeholder="">
         </div>
-        <button type="submit" class="btn btn-primary">登録</button>
+        <input type="submit" class="btn btn-primary" value="登録">
     </form>
 
 </div> <!-- .container -->

@@ -2,17 +2,21 @@
 
 require_once('./functions.php');
 session_start();
+// ログインしていなかったらログイン画面に遷移
 redirectIfNotLogin();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+    // 未入力の値が無いか
     if (empty($_POST['title']) || empty($_POST['body'])) {
         $_SESSION["error"] = "タイトルと本文を入力してください。";
         header("Location: new-article.php");
         return;
     }
 
+    // DB接続
     $db = connectDb();
+    // 記事を登録
     $sql = "INSERT INTO articles(user_id, title, body) VALUES(:user_id, :title, :body)";
     $statement = $db->prepare($sql);
     $result = $statement->execute([
@@ -25,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $_SESSION["success"] = "記事を投稿しました";
+    // 一覧画面に遷移
     header("Location: article-list.php");
 }
 
@@ -84,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <!-- Submit -->
-        <button type="submit" class="btn btn-lg btn-success">投稿</button>
+        <input type="submit" class="btn btn-lg btn-success" value="投稿">
 
     </form>
 

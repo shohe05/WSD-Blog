@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label for="password-input">パスワード</label>
             <input type="password" name="password" class="form-control" id="password-input" placeholder="">
         </div>
-        <button type="submit" class="btn btn-primary">ログイン</button>
+        <input type="submit" class="btn btn-primary" value="ログイン">
     </form>
 
 </div> <!-- /container -->
