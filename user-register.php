@@ -6,7 +6,7 @@ session_start();
  * 普通にアクセスした場合: GETリクエスト
  * 登録フォームからSubmitした場合: POSTリクエスト
  */
-// POSTリクエストの場合、以下の処理
+// POSTリクエストの場合
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // 送られた値を取得
@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <html lang="ja">
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/jumbotron-narrow.css">
 </head>

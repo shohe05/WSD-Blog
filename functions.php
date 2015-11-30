@@ -27,6 +27,12 @@ function redirectIfNotLogin()
 }
 
 // ログインしているユーザーの情報を取得する
-function loginUser() {
+function loginUser()
+{
     return $_SESSION['user'];
+}
+
+// ユーザーから入力された文字を安全な文字列に変換する(HTMLエスケープ)
+function h($string) {
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }

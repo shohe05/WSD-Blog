@@ -4,30 +4,43 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if (empty($_POST['username']) || empty($_POST['password'])) {
+    // 送られた値を取得
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    /**
+     * 入力値チェック
+     */
+    // 未入力の項目があるか
+    if (empty($username) || empty($password)) {
         $_SESSION["error"] = "入力されていない項目があります";
         header("Location: login.php");
         return;
     }
 
+    // DB接続
     $db = connectDb();
+    // 以下4行、送られたusernameを使ってユーザーをDBから取得
     $sql = 'SELECT * FROM users WHERE username = :username';
     $statement = $db->prepare($sql);
-    $statement->execute(['username' => $_POST['username']]);
+    $statement->execute(['username' => $username]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    // ユーザーが取得できなかったら入力されたusernameが間違っている
     if (!$user) {
         $_SESSION["error"] = "入力した情報に誤りがあります。";
         header("Location: login.php");
         return;
     }
 
-    if (crypt($_POST['password'], $user['password']) !== $user['password']) {
+    // パスワードとパスワード確認が一致しているか
+    if (crypt($password, $user['password']) !== $user['password']) {
         $_SESSION["error"] = "入力した情報に誤りがあります。";
         header("Location: login.php");
         return;
     }
 
+    // ログイン情報をセッションに格納する
     $_SESSION["user"]["id"] = $user['id'];
     $_SESSION["user"]["username"] = $user['username'];
 
@@ -39,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <html lang="ja">
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/jumbotron-narrow.css">
 </head>
