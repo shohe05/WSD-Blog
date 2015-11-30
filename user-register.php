@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $statement = $db->prepare($sql);
     $result = $statement->execute([
         ':username' => $username,
-        ':password' => password_hash($password, PASSWORD_DEFAULT),
+        ':password' => crypt($password),
     ]);
     if (!$result) {
         die('Database Error');

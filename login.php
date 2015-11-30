@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return;
     }
 
-    if (!password_verify($_POST['password'], $user['password'])) {
+    if (crypt($_POST['password'], $user['password']) !== $user['password']) {
         $_SESSION["error"] = "入力した情報に誤りがあります。";
         header("Location: login.php");
         return;
