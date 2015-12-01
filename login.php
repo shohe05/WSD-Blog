@@ -23,9 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return;
     }
 
-    // DB接続
+    /**
+     * 認証
+     */
     $db = connectDb();
-    // 以下4行、送られたusernameを使ってユーザーをDBから取得
+    // 送られたusernameを使ってDBを検索する
     $sql = 'SELECT * FROM users WHERE username = :username';
     $statement = $db->prepare($sql);
     $statement->execute(['username' => $username]);
@@ -45,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return;
     }
 
-    // ログイン情報をセッションに格納する
+    // ログイン処理
+    // ユーザー情報をセッションに格納する
     $_SESSION["user"]["id"] = $user['id'];
     $_SESSION["user"]["username"] = $user['username'];
 

@@ -3,7 +3,7 @@ require_once('./functions.php');
 session_start();
 
 // ログインしていなかったらログイン画面に遷移
-redirectIfNotLogin();
+redirectIfNotLogin();  // ※ この関数はfunctions.phpに定義してある
 
 /*
  * 普通にアクセスした場合: GETリクエスト
@@ -19,9 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         return;
     }
 
-    // DB接続
-    $db = connectDb();
     // 記事を登録
+    $db = connectDb();
     $sql = "INSERT INTO articles(user_id, title, body) VALUES(:user_id, :title, :body)";
     $statement = $db->prepare($sql);
     $result = $statement->execute([
@@ -56,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./article-list.php">一覧</a></li>
+                <li role="presentation"><a href="./index.php">一覧</a></li>
                 <li role="presentation"><a href="./new-article.php">投稿</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>

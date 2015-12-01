@@ -43,7 +43,7 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./article-list.php">一覧</a></li>
+                <li role="presentation"><a href="./index.php">一覧</a></li>
                 <li role="presentation"><a href="./new-article.php">投稿</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo h(loginUser()['username']); ?> <span class="caret"></span></a>
@@ -71,6 +71,7 @@ foreach ($statement->fetchAll(PDO::FETCH_ASSOC) as $article ) {
             <?php foreach($articles as $article): ?>
                 <li class='article'>
                     <h3>
+                        <!-- 記事詳細画面へのリンク -->
                         <a href="./article.php?id=<?php echo $article['id']; ?>">
                             <?php echo h($article['title']); ?>
                         </a>

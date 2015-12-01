@@ -31,6 +31,7 @@ if (!$user) {
         die('Database Error');
     }
 
+    // 登録したユーザーを取得し、変数$userに格納
     $sql = 'SELECT * FROM users WHERE twitter_id = :twitter_id';
     $statement = $db->prepare($sql);
     $statement->execute(['twitter_id' => $twitter_id]);

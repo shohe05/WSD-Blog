@@ -1,5 +1,7 @@
 <?php
+// functions.phpを読み込む. よく使う処理をまとめた関数を定義している
 require_once('./functions.php');
+// セッションを利用する
 session_start();
 
 /*
@@ -9,7 +11,7 @@ session_start();
 // POSTリクエストの場合
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // 送られた値を取得
+    // 送られた値を変数に格納
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password_confirmation = $_POST['password-confirmation'];
@@ -48,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die('Database Error');
     }
 
-    $_SESSION["success"] = "登録が完了しました。";
+    // セッションにメッセージを格納
+    $_SESSION["success"] = "登録が完了しました。ログインしてください。";
     // ログイン画面に遷移
     header("Location: login.php");
 }

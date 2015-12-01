@@ -3,8 +3,8 @@ CREATE TABLE users (
     twitter_id VARCHAR(255),
     username VARCHAR(50) NOT NULL,
     password VARCHAR(255),
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    modified_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    created_at DATETIME,
+    modified_at DATETIME
 );
 
 CREATE TABLE articles (
@@ -12,11 +12,6 @@ CREATE TABLE articles (
     user_id INT UNSIGNED NOT NULL,
     title VARCHAR(50) NOT NULL,
     body TEXT NOT NULL,
-    created_at DATETIME NOT NULL,
-    modified_at DATETIME NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE cascade ON DELETE cascade
+    created_at DATETIME,
+    modified_at DATETIME
 );
-
-
-- ユーザー
-- 記事
