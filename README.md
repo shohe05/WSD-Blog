@@ -24,3 +24,31 @@
 ## バージョン情報
 - PHP 5.4 (C4SAと同じ)
 - MySQL 5.5 (C4SAと同じ)
+
+
+## DBの設定について
+```connectDB()``` メソッドを使う場合は、config.phpに自身のDBの情報を書いてください。(C4SAの共有MySQLから確認する)
+
+config.php
+
+```
+<?php
+return [
+    'db' => [
+        'database' => ‘データベース名', // PHPMyAdminの画面左側のデータベース名
+        'user' => '控えたユーザー名, // C4SAの共有MySQLに書いてある
+        'password' => '控えたパスワード', // C4SAの共有MySQLに書いてある
+        'host' => '控えたローカルIP' // C4SAの共有MySQLに書いてある
+    ]
+];
+```
+
+そして、使いたいファイルの上でfunctions.phpを読み込んであげれば使えます。
+
+```
+
+<?php
+require_once('./functions.php');
+$db = connectDB();
+
+```
