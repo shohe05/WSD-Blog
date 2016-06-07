@@ -36,9 +36,9 @@ config.php
 return [
     'db' => [
         'database' => ‘データベース名', // PHPMyAdminの画面左側のデータベース名
-        'user' => '控えたユーザー名, // C4SAの共有MySQLに書いてある
-        'password' => '控えたパスワード', // C4SAの共有MySQLに書いてある
-        'host' => '控えたローカルIP' // C4SAの共有MySQLに書いてある
+        'user' => 'ユーザー名, // C4SAの共有MySQLに書いてある
+        'password' => 'パスワード', // C4SAの共有MySQLに書いてある
+        'host' => 'ローカルIP' // C4SAの共有MySQLに書いてある
     ]
 ];
 ```
