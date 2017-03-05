@@ -8,14 +8,15 @@
         - リポジトリURL：https://github.com/shotana/WSD-Blog.git
         - ディレクトリ名：wsd_blog
 - データベースを作る。
-    1. 「共有MySQL」メニューからphpMyAdminの管理画面を開く。
+    1. 「ファイル」からwsd_blogフォルダの中の`db_schema.sql`を開き、内容を全てコピーしておく
+    1. 「共有MySQL」メニューからphpMyAdminの管理画面を開く
     1. 左のリストから自分のデータベースの名前をクリック
     1. 「SQL」をクリック
-    1. テキストエリアに db_schema.sql の内容をコピペ。
+    1. テキストエリアに コピーしておいたdb_schema.sql の内容を貼り付ける
     1. 実行
     2. 確認：「構造」をクリックして、テーブルが２つ、「articles」と「users」があればOK
 - PHPからデータベースに接続するための設定
-    1. 「共有MySQL」メニューの「ホスト」「ローカルIP」「ユーザー」「パスワード」をコピーしておく
+    1. 「共有MySQL」メニューの「ローカルIP」「ユーザー」「パスワード」をコピーしておく
     1. 「ファイル」からconfig.phpを開く
     1.  5行目の `DATABASE_NAME` の部分をコピーしたユーザーの値に置き換え
     1.  6行目の `USERNAME` の部分をコピーしたユーザーの値に置き換え
@@ -25,13 +26,13 @@
 - TwitterAPIの設定
     1. TwitterRestAPIのページでアプリケーション登録を行う
         1. `https://apps.twitter.com/app/new`を開き、フォームに下記のように入力する
-            - Name: アプリケーション名。好きな名前を入力する。
-            - Description：適当な説明を入力する。10文字以上。
-            - Website: 自分のキャンバスのURL + `wsd_blog`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog` とする。
-            - Callback Url: 自分のキャンバスのURL + `wsd_blog/twitter-login.php`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog/twitter-login.php` とする。
-            - 規約に同意するチェックを入れて、ボタン「Create Your Twitter Application」を押下。
-    1. 上で登録したアプリケーションのページを開き、「Keys And Access Tokens」のタブを選択する。「Consumer Key (API Key)」「Consumer Secret (API Secret)」の値を控えておく。`hybridauth/hybridauth/config.php`  の39行目の`key`にConsumer Keyの値、`secret`にConsumer Secretの値を入れる。
-    1. `hybridauth/hybridauth/config.php` の14行目の `base_url` を書き換える. `http://自分のキャンバスのURL/wsd_blog/hybridauth/hybridauth/`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog/hybridauth/hybridauth/` とする。末尾の`/`を忘れないように注意。
+            - Name: アプリケーション名。好きな名前を入力する
+            - Description：適当な説明を入力する。10文字以上
+            - Website: 自分のキャンバスのURL + `wsd_blog`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog` とする
+            - Callback Url: 自分のキャンバスのURL + `wsd_blog/twitter-login.php`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog/twitter-login.php` とする
+            - 規約に同意するチェックを入れて、ボタン「Create Your Twitter Application」を押下
+    1. 上で登録したアプリケーションのページを開き、「Keys And Access Tokens」のタブを選択する。「Consumer Key (API Key)」「Consumer Secret (API Secret)」の値を控えておく。`hybridauth/hybridauth/config.php`  の39行目の`key`にConsumer Keyの値、`secret`にConsumer Secretの値を入れる
+    1. `hybridauth/hybridauth/config.php` の14行目の `base_url` を書き換える. `http://自分のキャンバスのURL/wsd_blog/hybridauth/hybridauth/`とする。例えば自分のキャンバスのURLが`abc.com`ならば `http://abc.com/wsd_blog/hybridauth/hybridauth/` とする。末尾の`/`を忘れないように注意
 
 ## 要件
 - ユーザー名とパスワードを用いたユーザー登録と認証
