@@ -11,7 +11,7 @@
 
 return
 		array(
-			"base_url" => "http://localhost:9000/hybridauth/hybridauth/",
+			"base_url" => "YOUR SERVER URL/hybridauth/hybridauth",
 			"providers" => array(
 				// openid providers
 				"OpenID" => array(

@@ -24,50 +24,18 @@ $article_user = $statement->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="utf-8">
     <title>WSD Blog</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/jumbotron-narrow.css">
-    <style>
-        body {
-
-        }
-        .article:hover {
-            background: #f2f2f2;
-            cursor: pointer;
-        }
-
-        #article-title {
-            font-size: 3em;
-            font-weight: 700;
-        }
-
-        #article-meta {
-            color: grey;
-        }
-
-        #article-body {
-            font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;
-        }
-    </style>
 </head>
 <body>
+<div>
+    <h2>WSD Blog</h2>
 
-<div class="container">
-
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./index.php">一覧</a></li>
-                <li role="presentation"><a href="./new-article.php">投稿</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo h(loginUser()['username']); ?> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="./logout.php">ログアウト</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">WSD Blog</h3>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="./index.php">一覧</a></li>
+            <li><a href="./new-article.php">投稿</a></li>
+            <li><a href="./logout.php">ログアウト</a></li>
+        </ul>
+    </nav>
 
     <h1 id="article-title">
         <?php echo h($article['title']); ?>
@@ -79,7 +47,6 @@ $article_user = $statement->fetch(PDO::FETCH_ASSOC);
 
     <pre id="article-body" style="background: white; border:none; font-size:18px; padding: 0; margin-top: 30px;"><?php echo h($article['body']); ?></pre>
 
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>

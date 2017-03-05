@@ -45,37 +45,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="utf-8">
     <title>WSD Blog</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/jumbotron-narrow.css">
 </head>
 <body>
 
-<div class="container">
+<div>
 
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./index.php">一覧</a></li>
-                <li role="presentation"><a href="./new-article.php">投稿</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo loginUser()['username']; ?> <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="./logout.php">ログアウト</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">WSD Blog</h3>
-    </div>
+    <h2>WSD Blog</h2>
+
+    <nav>
+        <ul>
+            <li><a href="./index.php">一覧</a></li>
+            <li><a href="./new-article.php">投稿</a></li>
+            <li><a href="./logout.php">ログアウト</a></li>
+        </ul>
+    </nav>
 
     <form action="" method="post">
 
         <!-- Error Message -->
         <?php if(!empty($_SESSION['error'])): ?>
-            <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
-                <?php echo $_SESSION['error']; ?>
+            <div>
+                <pre><?php echo $_SESSION['error']; ?></pre>
                 <?php $_SESSION['error'] = null; ?>
             </div>
         <?php endif; ?>
@@ -87,19 +77,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <!-- Body -->
-        <div class="form-group">
-            <label for="body" class="control-label">本文</label>
-            <textarea name="body" class="form-control" rows="20" placeholder=""></textarea>
+        <div>
+            <label for="body">本文</label>
+            <textarea name="body" rows="20" placeholder=""></textarea>
         </div>
 
         <!-- Submit -->
-        <input type="submit" class="btn btn-lg btn-success" value="投稿">
+        <input type="submit" value="投稿">
 
     </form>
 
 </div>
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

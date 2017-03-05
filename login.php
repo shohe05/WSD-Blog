@@ -61,60 +61,51 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/jumbotron-narrow.css">
 </head>
 <body>
-<div class="container">
-
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./user-register.php">新規登録</a></li>
-                <li role="presentation"><a href="./login.php">ログイン</a></li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">WSD Blog</h3>
-    </div>
+<div>
+    <h3>WSD Blog</h3>
+    <nav>
+        <ul>
+            <li><a href="./user-register.php">新規登録</a></li>
+            <li><a href="./login.php">ログイン</a></li>
+        </ul>
+    </nav>
 
     <!-- Success Message -->
     <?php if(!empty($_SESSION['success'])): ?>
         <div class="alert alert-success" role="success">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Success:</span>
-            <?php echo $_SESSION['success']; ?>
+            <pre><?php echo $_SESSION['success']; ?></pre>
             <?php $_SESSION['success'] = null; ?>
         </div>
     <?php endif; ?>
 
     <!-- Error Message -->
     <?php if(!empty($_SESSION['error'])): ?>
-        <div class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            <?php echo $_SESSION['error']; ?>
+        <div>
+            <pre><?php echo $_SESSION['error']; ?></pre>
             <?php $_SESSION['error'] = null; ?>
         </div>
     <?php endif; ?>
 
     <h2>Twitterでログイン</h2>
-    <a href="./twitter-login.php" class="btn btn-success">Twitterログインはこちら</a>
+    <a href="./twitter-login.php">Twitterログインはこちら</a>
 
 
     <h2>ログイン</h2>
 
     <form action="" method="post">
-        <div class="form-group">
+        <div>
             <label for="username-input">ユーザー名</label>
-            <input type="text" name="username" class="form-control" id="username-input" placeholder="">
+            <input type="text" name="username" id="username-input" placeholder="">
         </div>
-        <div class="form-group">
+        <div>
             <label for="password-input">パスワード</label>
-            <input type="password" name="password" class="form-control" id="password-input" placeholder="">
+            <input type="password" name="password" id="password-input" placeholder="">
         </div>
-        <input type="submit" class="btn btn-primary" value="ログイン">
+        <input type="submit" value="ログイン">
     </form>
 
-</div> <!-- /container -->
+</div>
 </body>
 </html>

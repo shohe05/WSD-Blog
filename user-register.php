@@ -60,36 +60,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/jumbotron-narrow.css">
 </head>
 <body>
-<div class="container">
+<div>
+    <h3 class="text-muted">WSD Blog</h3>
 
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="./user-register.php">新規登録</a></li>
-                <li role="presentation"><a href="./login.php">ログイン</a></li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">WSD Blog</h3>
-    </div>
-
+    <nav>
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="./user-register.php">新規登録</a></li>
+            <li role="presentation"><a href="./login.php">ログイン</a></li>
+        </ul>
+    </nav>
 
     <h2>Twitterで登録</h2>
-    <a href="./twitter-login.php" class="btn btn-success">Twitterで登録するならこちら</a>
+    <a href="./twitter-login.php">Twitterで登録するならこちら</a>
 
     <h2>新規登録</h2>
 
     <!-- Error Message -->
-    <!-- もしセッションにエラーメッセージが入っていたら表示する -->
-    <!-- 一回表示したら、セッションから削除する -->
     <?php if(!empty($_SESSION['error'])): ?>
-        <div class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            <?php echo $_SESSION['error']; ?>
+        <div>
+            <pre><?php echo $_SESSION['error']; ?></pre>
             <?php $_SESSION['error'] = null; ?>
         </div>
     <?php endif; ?>
@@ -97,23 +88,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- 登録フォーム -->
     <form method="post" action="">
         <!-- ユーザー名 -->
-        <div class="form-group">
+        <div>
             <label for="username-input">ユーザー名</label>
-            <input type="text" name="username" class="form-control" id="username-input" placeholder="">
+            <input type="text" name="username" id="username-input" placeholder="">
         </div>
         <!-- パスワード -->
-        <div class="form-group">
+        <div>
             <label for="password-input">パスワード</label>
-            <input type="password" name="password" class="form-control" id="password-input" placeholder="">
+            <input type="password" name="password" id="password-input" placeholder="">
         </div>
         <!-- パスワード確認 -->
-        <div class="form-group">
+        <div>
             <label for="password-confirmation-input">パスワード確認</label>
-            <input type="password" name="password-confirmation" class="form-control" id="password-confirmation-input" placeholder="">
+            <input type="password" name="password-confirmation" id="password-confirmation-input" placeholder="">
         </div>
-        <input type="submit" class="btn btn-primary" value="登録">
+        <input type="submit" value="登録">
     </form>
 
-</div> <!-- .container -->
+</div>
 </body>
 </html>
